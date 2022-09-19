@@ -7,7 +7,8 @@ interface User {
   login: string;
   name: string;
   avatar_url: string;
-  public_reps: number;
+  public_repos: number;
+  html_url: string;
 }
 
 export const handler: Handlers = {
@@ -40,10 +41,16 @@ export default function Github({ data }: PageProps<User | null>) {
         </section>
         { data?.name &&
             <section>
-                <img src={data.avatar_url} width={64} height={64} />
-                <h1>Name: {data.name}</h1>
-                <p>username: {data.login}</p>
-                {/* <p>Repos: {data.public_repos}</p> */}
+              <h2 class="mt-6 text-center text-xl text-purple-700 font-extrabold">Repo Found:</h2>
+                <div class="w-1/2 p-8 flex mt-6 bg-blue-700 mx-auto rounded">
+                  <img src={data.avatar_url} width={94} height={94} />
+                  <div class="ml-4 text-white text-lg">
+                    <h3>Name: <span class="text-green-300">{data.name}</span></h3>
+                    <p>username: <span class="text-green-300">{data.login}</span></p>
+                    <p>Repos: <span class="text-green-300">{data.public_repos}</span></p>
+                    <a href={data.html_url} target="_blank" rel="noopener">Repo Link</a>
+                  </div>
+                </div>
             </section>
         }
     </Layout>

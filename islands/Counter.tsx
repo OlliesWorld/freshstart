@@ -1,4 +1,4 @@
-import { useState } from "preact/hooks";
+import {  useState } from "preact/hooks";
 import { Button } from "../components/Button.tsx";
 
 interface CounterProps {
@@ -15,3 +15,4 @@ export default function Counter(props: CounterProps) {
     </div>
   );
 }
+
